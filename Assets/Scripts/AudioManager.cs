@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     {
         StepSlow,
         StepFast,
+
+        Beep,
     }
 
     public void PlaySFX(AudioId audioId, bool pitch = true)
