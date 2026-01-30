@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 
     private float timeRemainingDeadAnim = 5f;
     private CapsuleCollider capsuleCollider;
+    private Vector3 previousDirection = Vector3.zero;
 
     CameraHandler cameraHandler;
     public Vector2 rawCameraInput;
@@ -156,56 +157,63 @@ public class Player : MonoBehaviour
 
         Transform camera = Camera.main.transform;
 
-
         m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
 
         Vector3 direction = camera.forward * m_currentV + camera.right * m_currentH;
 
-        float directionLength = direction.magnitude;
-        direction.y = 0;
-        direction = direction.normalized * directionLength;
+
+
+        float locomotionDelta = 0.01f;
+        float myValue = animatorController.animator.GetFloat("Speed");
 
         if (rawInputMovement.y != 0 || rawInputMovement.x != 0)
         {
+            float directionLength = direction.magnitude;
+            direction.y = 0;
+            direction = direction.normalized * directionLength;
+
             m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
             transform.rotation = Quaternion.LookRotation(m_currentDirection);
-            float myValue = animatorController.animator.GetFloat("Speed");
+
             var calculatedSpeed = Speed * myValue * (HoldRun ? 2.3f : 1.5f);
             var finalDirection = new Vector3(m_currentDirection.x * calculatedSpeed * (Time.fixedDeltaTime * Framerate), _rigidbody.linearVelocity.y, m_currentDirection.z * calculatedSpeed * (Time.fixedDeltaTime * Framerate));
 
-            //Debug.Log(this.transform.position.x + " || " + finalDirection.x);
             _rigidbody.linearVelocity = finalDirection;
+            previousDirection = finalDirection;
+
             if (HoldRun)
             {
-                if (currentState.name != "PlayerRunState")
+                if (myValue <= 1)
                 {
-                    if (myValue <= 1)
-                    {
-                        myValue += 0.01f;
-                        animatorController.animator.SetFloat("Speed", myValue);
-                    }
+                    myValue += locomotionDelta;
+                    animatorController.animator.SetFloat("Speed", myValue);
                 }
             }
             else
             {
                 if (myValue <= 0.5)
                 {
-                    myValue += 0.01f;
+                    myValue += locomotionDelta;
                 }
                 else if (myValue > 0.5)
                 {
-                    myValue -= 0.01f;
+                    myValue -= locomotionDelta;
                 }
                 animatorController.animator.SetFloat("Speed", myValue);
             }
         }
         else
         {
-            _rigidbody.linearVelocity = Vector3.zero;
-            if (currentState.name != "PlayerIdleState")
+            if (myValue > 0)
             {
-                animatorController.animator.SetFloat("Speed", 0f);
+                if (previousDirection != Vector3.zero)
+                {
+                    _rigidbody.linearVelocity = previousDirection * 0.2f;
+                }
+
+                myValue -= locomotionDelta;
+                animatorController.animator.SetFloat("Speed", myValue);
             }
         }
 
