@@ -189,6 +189,7 @@ public class Player : MonoBehaviour
                     myValue += locomotionDelta;
                     animatorController.animator.SetFloat("Speed", myValue);
                 }
+                AudioManager.Instance.PlaySFX(AudioManager.AudioId.StepFast);
             }
             else
             {
@@ -201,6 +202,7 @@ public class Player : MonoBehaviour
                     myValue -= locomotionDelta;
                 }
                 animatorController.animator.SetFloat("Speed", myValue);
+                AudioManager.Instance.PlaySFX(AudioManager.AudioId.StepSlow);
             }
         }
         else
