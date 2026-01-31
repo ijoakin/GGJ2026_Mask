@@ -6,8 +6,6 @@ public class Player : MonoBehaviour
     public static Player Instance;
     public Vector2 rawInputMovement;
     private PlayerState currentState;
-
-    //DirectUpdate variables
     private readonly float m_interpolation = 10f;
     private Vector3 m_currentDirection = Vector3.zero;
     private float m_currentV = 0;
@@ -62,7 +60,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float delta = Time.fixedDeltaTime;
+        float delta = Time.deltaTime;
         if (cameraHandler != null)
         {
             cameraHandler.FollowTarget(delta);
@@ -162,8 +160,6 @@ public class Player : MonoBehaviour
 
         Vector3 direction = camera.forward * m_currentV + camera.right * m_currentH;
 
-
-
         float locomotionDelta = 0.01f;
         float myValue = animatorController.animator.GetFloat("Speed");
 
@@ -218,6 +214,5 @@ public class Player : MonoBehaviour
                 animatorController.animator.SetFloat("Speed", myValue);
             }
         }
-
     }
 }

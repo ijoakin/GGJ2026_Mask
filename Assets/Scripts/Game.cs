@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
     public static Game Instance;
 
     [SerializeField]
-    public float timeRemaining = 80;
+    public float timeRemaining = 10;
 
     [SerializeField]
     TextMeshProUGUI TimerText;
