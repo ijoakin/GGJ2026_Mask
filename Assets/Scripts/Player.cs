@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         _rigidbody = GetComponent<Rigidbody>();
         animatorController = GetComponent<CustomAnimatorController>();
         cameraHandler = CameraHandler.singleton;

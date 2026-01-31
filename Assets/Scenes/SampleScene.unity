@@ -2107,6 +2107,8 @@ MonoBehaviour:
   cameraSphereRadios: 0.2
   cameraCollisionOffSet: 0.2
   minimumCollisionOffSet: 0.2
+  sensitivity: 2
+  smoothing: 10
 --- !u!1 &227702544
 GameObject:
   m_ObjectHideFlags: 0
@@ -19482,6 +19484,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: d1c040f6-6bcc-4599-b4da-f2ac9d5e0f0a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: 'PlayerActions/Escape[/Keyboard/escape]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7508151468015017831}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEscape
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249028556930199913, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8234988183801216062, guid: 08e382987e55487438bd4931cf90350b, type: 3}
       propertyPath: m_Height
       value: 1.55
@@ -19491,6 +19533,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+--- !u!114 &7508151468015017831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2338096507426551531, guid: 08e382987e55487438bd4931cf90350b, type: 3}
+  m_PrefabInstance: {fileID: 7508151468015017830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2597e3867b97b9941bd12c0e8e84e0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

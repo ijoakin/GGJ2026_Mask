@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class InputHandler : MonoBehaviour
         if (value.canceled)
         {
             Player.Instance.StopRun();
+        }
+    }
+
+    public void OnEscape(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
